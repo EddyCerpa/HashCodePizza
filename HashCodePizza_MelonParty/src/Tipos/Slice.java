@@ -47,7 +47,7 @@ public class Slice {
 	}
 	
 	public int getSize() {
-		return (this.positionEnd.getRow() - this.positionIni.getRow()) * (this.positionEnd.getColumn() - this.positionIni.getColumn());
+		return (this.positionEnd.getRow() - this.positionIni.getRow() + 1) * (this.positionEnd.getColumn() - this.positionIni.getColumn() + 1);
 	}
 
 	public String toStringSolution(){

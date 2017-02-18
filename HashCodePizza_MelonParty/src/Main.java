@@ -21,8 +21,9 @@ public class Main {
 	}
 
 	public static void test(Pizza pizza) {
-		Slice slice = new Slice(new Position(0, 0), new Position(1, 2), 3, 0);
-		if(PizzaUtils.isSliceValid(slice, slice.getSize(), 2))
+		Slice slice = new Slice(new Position(0, 0), new Position(1, 1), 3, 0);
+		System.out.println(slice.getSize());
+		if(PizzaUtils.isSliceValid(slice, slice.getSize(), 1))
 			System.out.println("Es válido");
 		else
 			System.out.println("No es válido");
