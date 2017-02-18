@@ -108,16 +108,18 @@ public class PizzaUtils {
          */
         for(int i = ini.getRow(); i <= end.getRow(); i++) {
             for(int j = ini.getColumn(); j <= end.getColumn(); j++) {
+                /**
+                 * Mark value as taken
+                 */
                 uncuttedPizza.getSlicesTaken()[i][j] = true;
-                if(uncuttedPizza.getIncludedIngredients()[i][j] == Pizza.Ingredient.MUSHROOM){
-                    uncuttedPizza.decreaseIngredient(Pizza.Ingredient.MUSHROOM);
-                }
-                if(uncuttedPizza.getIncludedIngredients()[i][j] == Pizza.Ingredient.TOMATOE){
-                    uncuttedPizza.decreaseIngredient(Pizza.Ingredient.TOMATOE);
+                /**
+                 * Decrease ingredient from pizza
+                 */
+                uncuttedPizza.decreaseIngredient(uncuttedPizza.getIncludedIngredients()[i][j]);
 
                 }
             }
-        }
+
         return uncuttedPizza;
     }
 }
