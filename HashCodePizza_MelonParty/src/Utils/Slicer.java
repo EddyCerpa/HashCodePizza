@@ -32,7 +32,7 @@ public class Slicer {
 
         int min = ProblemEntry.L*2;
 
-        while(min<ProblemEntry.H){
+        while(min<=ProblemEntry.H){
 
             slicePosition = generateSlicePosition(ini, min, rows, columns);
             for (Position slicePos: slicePosition) {
@@ -61,11 +61,11 @@ public class Slicer {
 
         do{
             c = n/d;
-            if(n%d==0 && d+ini.getRow()<rows && c+ini.getColumn()<columns){
+            if(n%d==0 && d+ini.getRow()<=rows && c+ini.getColumn()<=columns){
                 ret.add(new Position(d-1,c-1));
             }
             d++;
-            //TODO It is not necessary to verify farter than mid
+            //TODO It is not necessary to verify further than mid
         }while(d<=n);
 
 
