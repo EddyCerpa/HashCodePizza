@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
 
         ParserIn parser = new ParserIn();
-        ProblemEntry data = parser.parseEntryFile("test.in");
+        ProblemEntry data = parser.parseEntryFile("medium.in");
         calculePizzaSlices(data);
     }
 
@@ -62,7 +62,7 @@ public class Main {
                     /**
                      * Call for a new nodes by expanding the first one
                      */
-                    nodeList.addAll(Slicer.generateSlicers(nodeAux));
+                    nodeList.addAll(0,Slicer.generateSlicers(nodeAux));
                 }
             }
         }

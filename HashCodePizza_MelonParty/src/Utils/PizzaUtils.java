@@ -52,7 +52,7 @@ public class PizzaUtils {
                 /**
                  * Check the ingredients
                  */
-                ((slice.getMushroom()>= minIngredients) && (slice.getMushroom()>= minIngredients)));
+                ((slice.getMushroom()>= minIngredients) && (slice.getTomatoes()>= minIngredients)));
 
     }
     
