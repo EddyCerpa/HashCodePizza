@@ -101,8 +101,15 @@ public class PizzaUtils {
      * @return              The param pizza with the position marked as "cutted"
      */
     public static Pizza getCuttedPizzaFromSlice(Pizza uncuttedPizza, Slice cuttedSlice){
+        /**
+         * Get initial and end positions
+         */
         Position ini = cuttedSlice.getPositionIni();
         Position end = cuttedSlice.getPositionEnd();
+        /**
+         * Clone the uncutted pizza to handle a new one
+         */
+        Pizza retPizza = uncuttedPizza.clone();
         /**
          * Iterate from the slice positions those positions in the pizza
          */
@@ -111,15 +118,15 @@ public class PizzaUtils {
                 /**
                  * Mark value as taken
                  */
-                uncuttedPizza.getSlicesTaken()[i][j] = true;
+                retPizza.getSlicesTaken()[i][j] = true;
                 /**
                  * Decrease ingredient from pizza
                  */
-                uncuttedPizza.decreaseIngredient(uncuttedPizza.getIncludedIngredients()[i][j]);
+                retPizza.decreaseIngredient(uncuttedPizza.getIncludedIngredients()[i][j]);
 
                 }
             }
 
-        return uncuttedPizza;
+        return retPizza;
     }
 }

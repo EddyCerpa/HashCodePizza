@@ -21,7 +21,10 @@ public class Main {
 	}
 
 	public static void test(Pizza pizza) {
+
 		Slice slice = PizzaUtils.cutSliceFromPizza(pizza, new Position(0, 0), new Position(1, 1));
+
+		Pizza newPizza=PizzaUtils.getCuttedPizzaFromSlice(pizza,slice);
 		System.out.println(slice.getSize());
 		if(PizzaUtils.isSliceValid(slice, slice.getSize(), 2))
 			System.out.println("Es válido");

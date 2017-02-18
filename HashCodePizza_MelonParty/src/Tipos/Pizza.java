@@ -124,6 +124,14 @@ public class Pizza {
     private int                 totalMushrooms;
 
 
+    /**
+     * Main constructor
+     * @param tomatoes      Num of tomatoes
+     * @param mushrooms     Num of mushrooms
+     * @param row           Num of pizza rows
+     * @param column        Num of pizza columns
+     * @param ingredients   Array with pizza ingredients
+     */
     public Pizza(int tomatoes ,int mushrooms, int row,int column, Ingredient[][] ingredients){
         this.pizzaRows=row;
         this.pizzaColumns=column;
@@ -137,6 +145,21 @@ public class Pizza {
 
         /*Inicializa el array*/
         slicesTaken = new boolean[row][column];
+    }
+
+    /**
+     * Take all the parameters from the current pizza and return a new pizza
+     *
+     * @return  A cloned pizza
+     */
+    public Pizza clone(){
+        Pizza retPizza=new Pizza(this.currentTomatoes,this.currentMushrooms,this.pizzaRows,this.pizzaColumns,this.includedIngredients);
+        retPizza.setTotalMushrooms(this.totalMushrooms);
+        retPizza.setTotalTomatoes(this.totalTomatoes);
+
+
+        return retPizza;
+
     }
 
 
