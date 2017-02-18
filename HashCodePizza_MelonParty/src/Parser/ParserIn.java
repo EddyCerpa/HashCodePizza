@@ -14,7 +14,8 @@ public class ParserIn {
 
     }
 
-    public Pizza parsePizzaFile(String infile){
+    public ProblemEntry parseEntryFile(String infile){
+        ProblemEntry problem = null;
         Pizza pizza = null;
         try (BufferedReader br = new BufferedReader(new FileReader(infile))){
             //Parse conditions
@@ -25,6 +26,8 @@ public class ParserIn {
             int columns = Integer.parseInt(items[1]);
             int L = Integer.parseInt(items[2]);
             int H = Integer.parseInt(items[3]);
+            ProblemEntry.H = H;
+            ProblemEntry.L = L;
 
             // Create array
             Pizza.Ingredient[][] ingredients = new Pizza.Ingredient[rows][columns];
@@ -46,10 +49,12 @@ public class ParserIn {
 
             pizza = new Pizza(tomatoes, mushrooms, rows, columns, ingredients);
 
+            problem = new ProblemEntry(pizza);
+
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return pizza;
+        return problem;
     }
 }

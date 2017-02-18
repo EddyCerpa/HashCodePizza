@@ -7,9 +7,17 @@ package Tipos;
  */
 public class Pizza {
 
-    public enum Ingredient
-    {
-        MUSHROOM, TOMATOE
+    public enum Ingredient {
+        MUSHROOM, TOMATOE;
+        
+        @Override
+        public String toString() {
+          switch(this) {
+            case MUSHROOM: return "M";
+            case TOMATOE: return "T";
+            default: throw new IllegalArgumentException();
+          }
+        }
     }
 
 
@@ -59,6 +67,16 @@ public class Pizza {
 
     public void setCurrentMushrooms(int currentMushrooms) {
         this.currentMushrooms = currentMushrooms;
+    }
+    
+    public String toString() {
+    	String ret = "";
+    	for(int i = 0; i < this.pizzaRows; i++) {
+    		for(int j = 0; j < this.pizzaColumns; j++)
+    			ret += includedIngredients[i][j] + " ";
+    		ret += System.lineSeparator();
+		}
+    	return ret;
     }
 
     private Ingredient [][]     includedIngredients;

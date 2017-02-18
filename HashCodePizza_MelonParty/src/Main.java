@@ -1,4 +1,5 @@
 import Parser.ParserIn;
+import Parser.ProblemEntry;
 import Tipos.Pizza;
 import Tipos.Position;
 import Tipos.Slice;
@@ -12,8 +13,9 @@ public class Main {
 		System.out.println("Hola");
 
 		ParserIn parser = new ParserIn();
-		Pizza pizza = parser.parsePizzaFile("test.in");
+        ProblemEntry data = parser.parseEntryFile("test.in");
 		System.out.println("Pizza parsed!");
+		Pizza pizza = data.getPizza();
 		System.out.println(pizza);
 		test(pizza);
 	}
