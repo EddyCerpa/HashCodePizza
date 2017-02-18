@@ -93,4 +93,25 @@ public class PizzaUtils {
     	return 0 <= sliceIni.getRow() && 0 <= sliceIni.getColumn() &&
     		   pizzaRows >= sliceEnd.getRow() && pizzaCols >= sliceEnd.getColumn();
     }
+
+    /**
+     * Return the pizza object obtained by params with the positions marked as "cutted" that the slice has
+     *
+     * @param uncuttedPizza A pizza without the positions marked
+     * @param cuttedSlice   A slice from the pizza
+     * @return              The param pizza with the position marked as "cutted"
+     */
+    public static Pizza getCuttedPizzaFromSlice(Pizza uncuttedPizza, Slice cuttedSlice){
+        Position ini = cuttedSlice.getPositionIni();
+        Position end = cuttedSlice.getPositionEnd();
+        /**
+         * Iterate from the slice positions those positions in the pizza
+         */
+        for(int i = ini.getRow(); i <= end.getRow(); i++) {
+            for(int j = ini.getColumn(); j <= end.getColumn(); j++) {
+                uncuttedPizza.getSlicesTaken()[i][j] = true;
+            }
+        }
+        return uncuttedPizza;
+    }
 }
