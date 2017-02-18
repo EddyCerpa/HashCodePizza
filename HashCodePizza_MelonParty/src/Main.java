@@ -1,7 +1,9 @@
 import Parser.ParserIn;
+import Parser.ProblemEntry;
 import Tipos.Pizza;
 
 public class Main {
+
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -9,7 +11,7 @@ public class Main {
 		System.out.println("Hola");
 
 		ParserIn parser = new ParserIn();
-		Pizza pizza = parser.parsePizzaFile("test.in");
+		ProblemEntry data = parser.parseEntryFile("small.in");
 		System.out.println("Pizza parsed!");
 
 
