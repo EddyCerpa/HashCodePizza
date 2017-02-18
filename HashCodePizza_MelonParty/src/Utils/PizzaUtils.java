@@ -63,9 +63,13 @@ public class PizzaUtils {
      * @return
      */
     public static Slice cutSliceFromPizza(Pizza pizza, Position ini, Position end) {
+    	// If is not into the bounds return a null object.
+    	if(!checkOutOfBounds(pizza.getPizzaRows(), pizza.getPizzaColumns(), ini, end))
+    		return null;
     	int m = 0, t = 0;
     	for(int i = ini.getRow(); i <= end.getRow(); i++) {
     		for(int j = ini.getColumn(); j <= end.getColumn(); j++) {
+    			// If the slice is already cut return a null object.
     			if(pizza.getSlicesTaken()[i][j])
     				return null;
     			if(pizza.getIncludedIngredients()[i][j] == Pizza.Ingredient.MUSHROOM)
@@ -75,5 +79,18 @@ public class PizzaUtils {
     		}
     	}
     	return new Slice(ini, end, t, m);
+    }
+    
+    /**
+     * 
+     * @param pizzaIni Initial pizza position.
+     * @param pizzaEnd Final pizza position.
+     * @param sliceIni Initial slice position.
+     * @param sliceEnd Final slice position.
+     * @return True if is not out of bounds, false if is out of bounds. 
+     */
+    public static boolean checkOutOfBounds(int pizzaRows, int pizzaCols, Position sliceIni, Position sliceEnd) {
+    	return 0 <= sliceIni.getRow() && 0 <= sliceIni.getColumn() &&
+    		   pizzaRows >= sliceEnd.getRow() && pizzaCols >= sliceEnd.getColumn();
     }
 }
