@@ -82,9 +82,6 @@ public class PizzaUtils {
     }
     
     /**
-     * 
-     * @param pizzaIni Initial pizza position.
-     * @param pizzaEnd Final pizza position.
      * @param sliceIni Initial slice position.
      * @param sliceEnd Final slice position.
      * @return True if is not out of bounds, false if is out of bounds. 
