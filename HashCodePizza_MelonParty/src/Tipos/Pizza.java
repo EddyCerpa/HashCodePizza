@@ -68,6 +68,19 @@ public class Pizza {
     public void setCurrentMushrooms(int currentMushrooms) {
         this.currentMushrooms = currentMushrooms;
     }
+
+    public void decreaseIngredient(Ingredient i) {
+    	switch(i) {
+	    	case TOMATOE:
+	    		this.currentTomatoes--;
+	    		break;
+	    	case MUSHROOM:
+	    		this.currentMushrooms--;
+	    		break;
+	    	default:
+	    		break;
+    	}
+    }
     
     public String toString() {
     	String ret = "";
