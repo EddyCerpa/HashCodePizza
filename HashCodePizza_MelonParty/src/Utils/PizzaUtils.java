@@ -47,6 +47,7 @@ public class PizzaUtils {
                  * Check the size of the slice
                  */
                 (slice.getSize()<=sliceSize)
+
                     &&
                 /**
                  * Check the ingredients
@@ -82,9 +83,7 @@ public class PizzaUtils {
     }
     
     /**
-     * 
-     * @param pizzaIni Initial pizza position.
-     * @param pizzaEnd Final pizza position.
+     *
      * @param sliceIni Initial slice position.
      * @param sliceEnd Final slice position.
      * @return True if is not out of bounds, false if is out of bounds. 
@@ -110,6 +109,13 @@ public class PizzaUtils {
         for(int i = ini.getRow(); i <= end.getRow(); i++) {
             for(int j = ini.getColumn(); j <= end.getColumn(); j++) {
                 uncuttedPizza.getSlicesTaken()[i][j] = true;
+                if(uncuttedPizza.getIncludedIngredients()[i][j] == Pizza.Ingredient.MUSHROOM){
+                    uncuttedPizza.decreaseIngredient(Pizza.Ingredient.MUSHROOM);
+                }
+                if(uncuttedPizza.getIncludedIngredients()[i][j] == Pizza.Ingredient.TOMATOE){
+                    uncuttedPizza.decreaseIngredient(Pizza.Ingredient.TOMATOE);
+
+                }
             }
         }
         return uncuttedPizza;
