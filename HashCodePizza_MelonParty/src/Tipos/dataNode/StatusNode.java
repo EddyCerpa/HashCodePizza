@@ -1,5 +1,7 @@
 package Tipos.dataNode;
 
+import java.util.ArrayList;
+
 import Tipos.Pizza;
 import Tipos.Slice;
 
@@ -25,11 +27,11 @@ public class StatusNode {
         this.currentPizza = currentPizza;
     }
 
-    public Slice[] getCurrentSlicesCutted() {
+    public ArrayList<Slice> getCurrentSlicesCutted() {
         return currentSlicesCutted;
     }
 
-    public void setCurrentSlicesCutted(Slice[] currentSlicesCutted) {
+    public void setCurrentSlicesCutted(ArrayList<Slice> currentSlicesCutted) {
         this.currentSlicesCutted = currentSlicesCutted;
     }
 
@@ -54,7 +56,7 @@ public class StatusNode {
     /**
      * Slices already cutted from the pizza
      */
-    private Slice[] currentSlicesCutted;
+    private ArrayList<Slice> currentSlicesCutted;
 
     /**
      * Boolean flag. True if the pizza dont have any more slices to cut
@@ -64,7 +66,7 @@ public class StatusNode {
     /**
      * Constructor
      */
-    public StatusNode(int node, Pizza pizza, Slice[] slices){
+    public StatusNode(int node, Pizza pizza, ArrayList<Slice> slices){
         this.nodeNumber=node;
         this.currentPizza=pizza;
         this.currentSlicesCutted=slices;
@@ -83,9 +85,9 @@ public class StatusNode {
             /*
              * Get the number of ingredients of all slices in this node
              */
-            for(int i=0;i<currentSlicesCutted.length;i++){
-                numTomatoesInSlices += currentSlicesCutted[i].getTomatoes();
-                numMushroomsInSlices += currentSlicesCutted[i].getMushroom();
+            for(int i=0;i<currentSlicesCutted.size();i++){
+                numTomatoesInSlices += currentSlicesCutted.get(i).getTomatoes();
+                numMushroomsInSlices += currentSlicesCutted.get(i).getMushroom();
             }
 
             return (((numTomatoesInSlices + currentPizza.getCurrentTomatoes())==currentPizza.getTotalTomatoes())
