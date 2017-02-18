@@ -1,34 +1,27 @@
 import Parser.ParserIn;
 import Parser.ProblemEntry;
 import Tipos.Pizza;
-import Tipos.Position;
 import Tipos.Slice;
-import Utils.PizzaUtils;
+import Tipos.dataNode.StatusNode;
+import Utils.Slicer;
 
-public class Main {
+import java.util.ArrayList;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Hola!");
-		System.out.println("Hola");
 
-		ParserIn parser = new ParserIn();
-		ProblemEntry data = parser.parseEntryFile("test.in");
-		System.out.println("Pizza parsed!");
-		Pizza pizza = data.getPizza();
-		System.out.println(pizza);
-		test(pizza);
-	}
+    public class Main {
 
-	public static void test(Pizza pizza) {
+        public static void main(String[] args) {
+            // TODO Auto-generated method stub
+            System.out.println("Hola!");
+            System.out.println("Hola");
 
-		Slice slice = PizzaUtils.cutSliceFromPizza(pizza, new Position(0, 0), new Position(1, 1));
+            ParserIn parser = new ParserIn();
+            ProblemEntry data = parser.parseEntryFile("small.in");
+            System.out.println("Pizza parsed!");
+            Pizza pizza = data.getPizza();
+            //System.out.println(pizza);
+            Slicer.generateSlicers(new StatusNode(0,pizza,new ArrayList<Slice>()));
+        }
 
-		Pizza newPizza=PizzaUtils.getCuttedPizzaFromSlice(pizza,slice);
-		System.out.println(slice.getSize());
-		if(PizzaUtils.isSliceValid(slice, slice.getSize(), 2))
-			System.out.println("Es válido");
-		else
-			System.out.println("No es válido");
-	}
-}
+
+    }

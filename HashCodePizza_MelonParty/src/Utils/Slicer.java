@@ -1,6 +1,9 @@
 package Utils;
 
+import Parser.ProblemEntry;
+import Tipos.Pizza;
 import Tipos.Position;
+import Tipos.Slice;
 import Tipos.dataNode.StatusNode;
 
 import java.util.ArrayList;
@@ -13,10 +16,59 @@ public class Slicer {
     public Slicer() {
     }
     public static List<StatusNode> generateSlicers(StatusNode node){
+
         List<StatusNode> ret = new ArrayList<StatusNode>();
-        //Position ini = PizzaUtils.getFirstCorrectPosition(node);
+        List<Position> slicePosition;
+
+        Position ini = PizzaUtils.getFirstCorrectPosition(node);
+
+        Pizza pizza = node.getCurrentPizza();
+        Pizza pizzaAux;
+        int rows = pizza.getPizzaRows();
+        int columns = pizza.getPizzaColumns();
+        Slice slice;
+
+        int min = ProblemEntry.L*2;
+
+        while(min<ProblemEntry.H){
+
+            slicePosition = generateSlicePosition(ini, min, rows, columns);
+            for (Position slicePos: slicePosition) {
+                slice = PizzaUtils.cutSliceFromPizza(pizza, ini, slicePos);
+
+                if(PizzaUtils.isSliceValid(slice, ProblemEntry.H, ProblemEntry.L)){
+                    //Create node
+                    pizzaAux = PizzaUtils.getCuttedPizzaFromSlice(pizza,slice);
+                    ArrayList<Slice> slices = node.getCurrentSlicesCutted();
+                    slices.add(slice);
+                    ret.add(new StatusNode(node.getNodeNumber()+1, pizzaAux, slices));
+                }
+            }
+            min++;
+        }
 
 
         return ret;
     }
+
+    public static List<Position> generateSlicePosition(Position ini, int size, int rows, int columns){
+        ArrayList<Position> ret = new ArrayList<Position>();
+        int mid = size+1/2;
+        int n = size;
+        int d=1,c;
+
+        do{
+            c = n/d;
+            if(n%d==0 && d+ini.getRow()<rows && c+ini.getColumn()<columns){
+                ret.add(new Position(d-1,c-1));
+            }
+            d++;
+            //TODO It is not necessary to verify farter than mid
+        }while(d<=n);
+
+
+        return ret;
+    }
+
+
 }
