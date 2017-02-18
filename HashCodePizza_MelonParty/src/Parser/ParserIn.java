@@ -14,8 +14,8 @@ public class ParserIn {
 
     }
 
-    public ProblemEntry parsePizzaFile(String infile){
-        ProblemEntry problem = new ProblemEntry();
+    public ProblemEntry parseEntryFile(String infile){
+        ProblemEntry problem = null;
         Pizza pizza = null;
         try (BufferedReader br = new BufferedReader(new FileReader(infile))){
             //Parse conditions
