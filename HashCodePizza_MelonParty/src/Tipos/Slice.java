@@ -53,4 +53,10 @@ public class Slice {
 	public String toStringSolution(){
 		return positionIni.getRow() + " " + positionEnd.getRow() + " " + positionIni.getColumn() + " " + positionEnd.getColumn();
 	}
+	
+	public String toString() {
+		return "Position: " + this.toStringSolution() + System.lineSeparator()
+			 + "Tomatoes: " + this.tomatoes + "  --  Mushrooms: " + this.mushroom
+			 + " Size: " + this.getSize();
+	}
 }
