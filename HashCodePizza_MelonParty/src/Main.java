@@ -23,7 +23,7 @@ public class Main {
 	public static void test(Pizza pizza) {
 		Slice slice = PizzaUtils.cutSliceFromPizza(pizza, new Position(0, 0), new Position(1, 1));
 		System.out.println(slice.getSize());
-		if(PizzaUtils.isSliceValid(slice, slice.getSize(), 1))
+		if(PizzaUtils.isSliceValid(slice, slice.getSize(), 2))
 			System.out.println("Es válido");
 		else
 			System.out.println("No es válido");

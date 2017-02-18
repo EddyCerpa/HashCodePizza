@@ -66,6 +66,8 @@ public class PizzaUtils {
     	int m = 0, t = 0;
     	for(int i = ini.getRow(); i <= end.getRow(); i++) {
     		for(int j = ini.getColumn(); j <= end.getColumn(); j++) {
+    			if(pizza.getSlicesTaken()[i][j])
+    				return null;
     			if(pizza.getIncludedIngredients()[i][j] == Pizza.Ingredient.MUSHROOM)
     				m++;
     			else if(pizza.getIncludedIngredients()[i][j] == Pizza.Ingredient.TOMATOE)
