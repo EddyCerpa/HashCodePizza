@@ -54,4 +54,24 @@ public class PizzaUtils {
                 ((slice.getMushroom()>= minIngredients) && (slice.getMushroom()>= minIngredients)));
 
     }
+    
+    /**
+     * Cut a slice from a pizza with a init and start position.
+     * @param pizza Pizza to cut.
+     * @param ini Initial position.
+     * @param end End position.
+     * @return
+     */
+    public static Slice cutSliceFromPizza(Pizza pizza, Position ini, Position end) {
+    	int m = 0, t = 0;
+    	for(int i = ini.getRow(); i <= end.getRow(); i++) {
+    		for(int j = ini.getColumn(); j <= end.getColumn(); j++) {
+    			if(pizza.getIncludedIngredients()[i][j] == Pizza.Ingredient.MUSHROOM)
+    				m++;
+    			else if(pizza.getIncludedIngredients()[i][j] == Pizza.Ingredient.TOMATOE)
+    				t++;
+    		}
+    	}
+    	return new Slice(ini, end, t, m);
+    }
 }
