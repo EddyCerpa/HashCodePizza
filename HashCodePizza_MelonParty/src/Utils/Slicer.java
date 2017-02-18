@@ -38,7 +38,7 @@ public class Slicer {
             for (Position slicePos: slicePosition) {
                 slice = PizzaUtils.cutSliceFromPizza(pizza, ini, slicePos);
 
-                if(PizzaUtils.isSliceValid(slice, ProblemEntry.H, ProblemEntry.L)){
+                if((slice != null)&& (PizzaUtils.isSliceValid(slice, ProblemEntry.H, ProblemEntry.L))){
                     //Create node
                     pizzaAux = PizzaUtils.getCuttedPizzaFromSlice(pizza,slice);
                     ArrayList<Slice> slices = (ArrayList<Slice>)(node.getCurrentSlicesCutted()).clone();

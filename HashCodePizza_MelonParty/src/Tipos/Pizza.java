@@ -157,6 +157,15 @@ public class Pizza {
         retPizza.setTotalMushrooms(this.totalMushrooms);
         retPizza.setTotalTomatoes(this.totalTomatoes);
 
+        boolean [][] auxTaken = new boolean[pizzaRows][pizzaColumns];
+        for(int i = 0; i < pizzaRows; i++) {
+            for(int j = 0; j < pizzaColumns; j++) {
+                auxTaken[i][j]=slicesTaken[i][j];
+            }
+        }
+        retPizza.setSlicesTaken(auxTaken);
+        //retPizza.setSlicesTaken((this.slicesTaken).clone());
+
 
         return retPizza;
 

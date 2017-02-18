@@ -6,22 +6,73 @@ import Tipos.dataNode.StatusNode;
 import Utils.Slicer;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
-    public class Main {
+public class Main {
 
-        public static void main(String[] args) {
-            // TODO Auto-generated method stub
-            System.out.println("Hola!");
-            System.out.println("Hola");
+    public static void main(String[] args) {
 
-            ParserIn parser = new ParserIn();
-            ProblemEntry data = parser.parseEntryFile("small.in");
-            System.out.println("Pizza parsed!");
-            Pizza pizza = data.getPizza();
-            //System.out.println(pizza);
-            Slicer.generateSlicers(new StatusNode(0,pizza,new ArrayList<Slice>()));
+        ParserIn parser = new ParserIn();
+        ProblemEntry data = parser.parseEntryFile("test.in");
+        calculePizzaSlices(data);
+    }
+
+    public static void calculePizzaSlices(ProblemEntry data){
+        /**
+         * Take pizza from data
+         */
+        Pizza pizza = data.getPizza();
+
+
+        /**
+         * Create an arraylist with all the nodes
+         */
+        ArrayList<StatusNode> nodeList = new ArrayList<>();
+        nodeList.add(new StatusNode(0,pizza,new ArrayList<Slice>()));
+
+        Iterator<StatusNode> itr;
+        StatusNode nodeAux=null;
+
+        while(!nodeList.isEmpty()){
+            itr = null;
+            itr = nodeList.iterator();
+
+            if(itr.hasNext()){
+                /**
+                 * Extract the first node of the list
+                 */
+                nodeAux=itr.next();
+                /**
+                 * Check if this node is solution
+                 */
+                if(nodeAux.isNodeASolution()){
+                    /*
+                    * If the solution is found, return;
+                    * */
+                    break;
+
+                }
+                else{
+                    /**
+                     * Remove node from list
+                     */
+                    nodeList.remove(nodeAux);
+
+                    /**
+                     * Call for a new nodes by expanding the first one
+                     */
+                    nodeList.addAll(Slicer.generateSlicers(nodeAux));
+                }
+            }
         }
+
+        int a=0;
+
+
 
 
     }
+
+}
+

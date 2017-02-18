@@ -59,4 +59,6 @@ public class Slice {
 			 + "Tomatoes: " + this.tomatoes + "  --  Mushrooms: " + this.mushroom
 			 + " Size: " + this.getSize();
 	}
+
+
 }

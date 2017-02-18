@@ -98,6 +98,20 @@ public class StatusNode {
         }
     }
 
+    /**
+     * Check if the node is a solution of the problem
+     * @return  true if is a solution
+     */
+    public boolean isNodeASolution(){
+        return ((currentPizza.getCurrentMushrooms()== 0)
+                &&
+                (currentPizza.getCurrentTomatoes() ==0));
 
+    }
+
+    public int getNodeScore(){
+
+        return 0;
+    }
 
 }

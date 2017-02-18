@@ -46,7 +46,7 @@ public class PizzaUtils {
                 /**
                  * Check the size of the slice
                  */
-                (slice.getSize()<=sliceSize)
+                (slice.getSize() <= sliceSize)
 
                     &&
                 /**
