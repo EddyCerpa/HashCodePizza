@@ -11,9 +11,7 @@ public class Main {
 		ParserIn parser = new ParserIn();
 		Pizza pizza = parser.parsePizzaFile("test.in");
 		System.out.println("Pizza parsed!");
-
-
-
+	
 	}
 
 }
