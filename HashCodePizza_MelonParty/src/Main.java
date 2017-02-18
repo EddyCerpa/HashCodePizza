@@ -13,7 +13,7 @@ public class Main {
 		System.out.println("Hola");
 
 		ParserIn parser = new ParserIn();
-        ProblemEntry data = parser.parseEntryFile("test.in");
+		ProblemEntry data = parser.parseEntryFile("test.in");
 		System.out.println("Pizza parsed!");
 		Pizza pizza = data.getPizza();
 		System.out.println(pizza);
