@@ -68,9 +68,29 @@ public class Pizza {
     private int                 pizzaRows;
     private int                 pizzaColumns;
 
-    /* Num ingredients */
+    /* Num current ingredients */
     private int                 currentTomatoes;
     private int                 currentMushrooms;
+
+    public int getTotalTomatoes() {
+        return totalTomatoes;
+    }
+
+    public void setTotalTomatoes(int totalTomatoes) {
+        this.totalTomatoes = totalTomatoes;
+    }
+
+    public int getTotalMushrooms() {
+        return totalMushrooms;
+    }
+
+    public void setTotalMushrooms(int totalMushrooms) {
+        this.totalMushrooms = totalMushrooms;
+    }
+
+    /* Num total  */
+    private int                 totalTomatoes;
+    private int                 totalMushrooms;
 
 
     public Pizza(int tomatoes ,int mushrooms, int row,int column, Ingredient[][] ingredients){
@@ -78,6 +98,8 @@ public class Pizza {
         this.pizzaColumns=column;
         this.currentTomatoes=tomatoes;
         this.currentMushrooms=mushrooms;
+        this.totalTomatoes=tomatoes;
+        this.totalMushrooms=mushrooms;
         if(ingredients!=null){
             this.includedIngredients=ingredients;
         }
