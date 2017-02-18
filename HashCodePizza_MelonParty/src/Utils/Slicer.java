@@ -6,6 +6,7 @@ import Tipos.Position;
 import Tipos.Slice;
 import Tipos.dataNode.StatusNode;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class Slicer {
         Pizza pizzaAux;
         int rows = pizza.getPizzaRows();
         int columns = pizza.getPizzaColumns();
+        int nodeNumber = node.getNodeNumber();
         Slice slice;
 
         int min = ProblemEntry.L*2;
@@ -39,9 +41,9 @@ public class Slicer {
                 if(PizzaUtils.isSliceValid(slice, ProblemEntry.H, ProblemEntry.L)){
                     //Create node
                     pizzaAux = PizzaUtils.getCuttedPizzaFromSlice(pizza,slice);
-                    ArrayList<Slice> slices = node.getCurrentSlicesCutted();
+                    ArrayList<Slice> slices = (ArrayList<Slice>)(node.getCurrentSlicesCutted()).clone();
                     slices.add(slice);
-                    ret.add(new StatusNode(node.getNodeNumber()+1, pizzaAux, slices));
+                    ret.add(new StatusNode(++nodeNumber, pizzaAux, slices));
                 }
             }
             min++;
