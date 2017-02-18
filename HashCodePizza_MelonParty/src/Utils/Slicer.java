@@ -62,7 +62,7 @@ public class Slicer {
         do{
             c = n/d;
             if(n%d==0 && d+ini.getRow()<=rows && c+ini.getColumn()<=columns){
-                ret.add(new Position(d-1,c-1));
+                ret.add(new Position(d-1+ini.getRow(),c-1+ini.getColumn()));
             }
             d++;
             //TODO It is not necessary to verify further than mid
