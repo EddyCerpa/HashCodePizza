@@ -51,7 +51,7 @@ public class Slice {
 	}
 
 	public String toStringSolution(){
-		return positionIni.getRow() + " " + positionEnd.getRow() + " " + positionIni.getColumn() + " " + positionEnd.getColumn();
+		return positionIni.getRow() + " " + positionIni.getColumn() + " " + positionEnd.getRow() + " " + positionEnd.getColumn();
 	}
 	
 	public String toString() {
