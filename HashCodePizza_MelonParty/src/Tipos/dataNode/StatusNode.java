@@ -2,6 +2,7 @@ package Tipos.dataNode;
 
 import java.util.ArrayList;
 
+import Parser.ProblemEntry;
 import Tipos.Pizza;
 import Tipos.Slice;
 
@@ -114,4 +115,13 @@ public class StatusNode {
         return 0;
     }
 
+    /**
+     *
+     * @return True if the pizza can not generate another slice valid
+     */
+    public boolean needIngredients() {
+        return currentPizza.getCurrentMushrooms() < ProblemEntry.L
+                ||
+                currentPizza.getCurrentTomatoes() < ProblemEntry.L;
+    }
 }

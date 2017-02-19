@@ -38,8 +38,9 @@ public class Main {
         StatusNode nodeAux=null;
 
         while(!nodeList.isEmpty()){
-            itr = null;
             itr = nodeList.iterator();
+
+            System.out.println("Nodes at the list " + nodeList.size() + System.lineSeparator());
 
             if(itr.hasNext()){
                 /**
@@ -56,6 +57,16 @@ public class Main {
                     return nodeAux;
 
                 }
+                /**
+                 * Check if this node can not generate a new valid solution
+                 */
+                else if(nodeAux.needIngredients()){
+                    /**
+                     * Remove without expanding
+                     */
+                    nodeList.remove(nodeAux);
+
+                }
                 else{
                     /**
                      * Remove node from list
@@ -63,7 +74,7 @@ public class Main {
                     nodeList.remove(nodeAux);
 
                     /**
-                     * Call for a new nodes by expanding the first one
+                     * Call for new nodes by expanding the first one
                      */
                     nodeList.addAll(0,Slicer.generateSlicers(nodeAux));
                 }
