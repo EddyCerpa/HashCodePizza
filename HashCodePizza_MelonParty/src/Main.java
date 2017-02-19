@@ -1,4 +1,5 @@
 import Parser.ParserIn;
+import Parser.ParserOut;
 import Parser.ProblemEntry;
 import Tipos.Pizza;
 import Tipos.Slice;
@@ -13,9 +14,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ParserIn parser = new ParserIn();
-        ProblemEntry data = parser.parseEntryFile("medium.in");
+        ProblemEntry data = ParserIn.parseEntryFile("small.in");
         StatusNode solution = calculePizzaSlices(data);
+        ParserOut.generateOutputFile("small.out", solution);
+
     }
 
     public static StatusNode calculePizzaSlices(ProblemEntry data){
