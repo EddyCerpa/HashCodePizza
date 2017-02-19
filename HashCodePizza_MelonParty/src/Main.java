@@ -15,10 +15,10 @@ public class Main {
 
         ParserIn parser = new ParserIn();
         ProblemEntry data = parser.parseEntryFile("medium.in");
-        calculePizzaSlices(data);
+        StatusNode solution = calculePizzaSlices(data);
     }
 
-    public static void calculePizzaSlices(ProblemEntry data){
+    public static StatusNode calculePizzaSlices(ProblemEntry data){
         /**
          * Take pizza from data
          */
@@ -50,7 +50,7 @@ public class Main {
                     /*
                     * If the solution is found, return;
                     * */
-                    break;
+                    return nodeAux;
 
                 }
                 else{
@@ -67,10 +67,7 @@ public class Main {
             }
         }
 
-        int a=0;
-
-
-
+        return null;
 
     }
 
