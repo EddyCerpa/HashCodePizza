@@ -14,7 +14,7 @@ public class ParserIn {
 
     }
 
-    public ProblemEntry parseEntryFile(String infile){
+    public static ProblemEntry parseEntryFile(String infile){
         ProblemEntry problem = null;
         Pizza pizza = null;
         try (BufferedReader br = new BufferedReader(new FileReader(infile))){
