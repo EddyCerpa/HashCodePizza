@@ -6,7 +6,6 @@ import Tipos.Position;
 import Tipos.Slice;
 import Tipos.dataNode.StatusNode;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +15,15 @@ import java.util.List;
 public class Slicer {
     public Slicer() {
     }
+
+    /**
+     *
+     * @param node Current state of the algorithm
+     * @return Array of nodes branched from the receiving node
+     */
     public static List<StatusNode> generateSlicers(StatusNode node){
 
-        List<StatusNode> ret = new ArrayList<StatusNode>();
+        List<StatusNode> ret = new ArrayList<>();
         List<Position> slicePosition;
 
         Position ini = PizzaUtils.getFirstCorrectPosition(node);
@@ -53,8 +58,16 @@ public class Slicer {
         return ret;
     }
 
+    /**
+     *
+     * @param ini From this generate possibles slices
+     * @param size Size of the slices to generate
+     * @param rows Edge rows
+     * @param columns  Edge columns
+     * @return Array of second positions of possibles slices
+     */
     public static List<Position> generateSlicePosition(Position ini, int size, int rows, int columns){
-        ArrayList<Position> ret = new ArrayList<Position>();
+        ArrayList<Position> ret = new ArrayList<>();
         int mid = size+1/2;
         int n = size;
         int d=1,c;
@@ -65,7 +78,7 @@ public class Slicer {
                 ret.add(new Position(d-1+ini.getRow(),c-1+ini.getColumn()));
             }
             d++;
-            //TODO It is not necessary to verify further than mid
+
         }while(d<=n);
 
 
