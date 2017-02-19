@@ -17,6 +17,7 @@ public class Main {
 
 
     static HashSet<Integer> duplicatedNodes = new HashSet<>();
+    static int nodosDuplicados=0;
 
     public static void main(String[] args) {
 
@@ -46,8 +47,11 @@ public class Main {
 
 
         StatusNode solution = calculePizzaSlicesFIRSTINDEPTH(data);
+        //StatusNode solution = calculePizzaSlicesFIRSTINAMPLITUDE(data);
+
         ParserOut.generateOutputFile("small.out", solution);
         System.out.println("Solution finded!");
+        System.out.println("Nodos duplicados: "+nodosDuplicados);
 
     }
 
@@ -65,7 +69,7 @@ public class Main {
          * Create an arraylist with all the nodes
          */
         ArrayList<StatusNode> nodeList = new ArrayList<>();
-        List<StatusNode> auxAL;
+        ArrayList<StatusNode> auxAL;
         nodeList.add(new StatusNode(0,pizza,new ArrayList<Slice>()));
 
 
@@ -200,12 +204,14 @@ public class Main {
      *
      * @param list
      */
-    public static void checkRepeatedNodes(List<StatusNode> list){
+    public static void checkRepeatedNodes(ArrayList<StatusNode> list){
         //TODO Fix hash bug: Too many collides for a small problem
         Iterator<StatusNode> itr;
         StatusNode nodeAux=null;
-        itr = list.iterator();
+        ArrayList<StatusNode> listNotRemoved = (ArrayList<StatusNode>) list.clone();
         int hashNodeAux=0;
+        itr = listNotRemoved.iterator();
+
         /**
          * Iterate the whole list
          */
@@ -216,9 +222,10 @@ public class Main {
             hashNodeAux = nodeAux.hashCode();
             /*Check if its duplicated*/
             if (duplicatedNodes.contains(hashNodeAux)) {
-                System.out.println("Nodo duplicado");
+                //System.out.println("Nodo duplicado");
+                nodosDuplicados++;
                 /*remove node*/
-                //list.remove(nodeAux);
+                list.remove(nodeAux);
             } else {
                 /*If not, add this node to the hashlist*/
                 duplicatedNodes.add(hashNodeAux);
