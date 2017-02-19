@@ -17,6 +17,7 @@ public class Main {
         ProblemEntry data = ParserIn.parseEntryFile("small.in");
         StatusNode solution = calculePizzaSlices(data);
         ParserOut.generateOutputFile("small.out", solution);
+        System.out.println("Solution finded!");
 
     }
 
